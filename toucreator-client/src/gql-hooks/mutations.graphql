@@ -1,0 +1,3 @@
+mutation CreatePlayer($firstName: String!, $lastName: String!, $nationality: String!, $age: Int!) {
+  createPlayer(firstName: $firstName, lastName: $lastName, nationality: $nationality, age: $age)
+}

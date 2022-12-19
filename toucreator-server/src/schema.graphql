@@ -1,0 +1,92 @@
+enum TournamentStatus {
+  NOT_STARTED
+  IN_PROGRESS
+  FINISHED
+}
+
+type CountryInfo {
+  num_code: String
+  alpha_2_code: String
+  alpha_3_code: String
+  en_short_name: String
+  nationality: String
+}
+
+type Player {
+  id: ID!
+  firstName: String!
+  lastName: String!
+  nationality: String!
+  age: Int!
+}
+
+type Team {
+  id: ID!
+  name: String
+  players: [Player!]
+  wins: Int
+  losses: Int
+}
+
+type Game {
+  id: ID!
+  teams: [Team!]
+  datetime: String
+  result: [Int!]
+  winner: Team
+}
+
+type Round {
+  id: ID!
+  name: String
+  games: [Game!]
+}
+
+type Tournament {
+  id: ID!
+  name: String
+  startDate: String
+  endDate: String
+  status: TournamentStatus
+  rounds: [Round!]
+  currentRound: String
+  players: [Player!]
+}
+
+type Query {
+  countryCodes: [CountryInfo!]!
+  players(nationality: String, ageFrom: Int, ageTo: Int): [Player!]
+  teams: [Team!]
+  tournaments(tournamentId: String): [Tournament]
+  currentRound(tournamentId: String!): Round
+  isTournamentFinished(torunamentId: String!): Boolean
+}
+
+input InputPlayer {
+  name: String!
+}
+
+input InputTeam {
+  name: String!
+  players: [InputPlayer!]!
+}
+
+input TournamentStartInput {
+  startDate: String!
+  endDate: String!
+  name: String!
+  teams: [InputTeam!]!
+}
+
+input InputGameUpdate {
+  gamesId: String!
+  result: [Int!]!
+}
+
+type Mutation {
+  createPlayer(firstName: String!, lastName: String!, nationality: String!, age: Int!): String
+  createTeam(name: String!, players: [String!]!): String
+  startTournament(input: TournamentStartInput!): String
+  updateGame(tournamentId: String!, input: InputGameUpdate!): String
+  nextRound(tournamentId: String!): String
+}

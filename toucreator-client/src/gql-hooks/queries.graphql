@@ -1,0 +1,16 @@
+query GetNationalities {
+  countryCodes {
+    alpha_2_code
+    nationality
+  }
+}
+
+query GetAllPlayers {
+  players {
+    id
+    firstName
+    lastName
+    nationality
+    age
+  }
+}

@@ -1,0 +1,4 @@
+{"option1":true,"option2":"yup","emitLegacyCommonJSImports":true}
+File C:/Users/adle/Development/codegen-example/codegen-client/src/components/teams/CreateTeamModal.tsx contains: CreateTeam
+File C:/Users/adle/Development/codegen-example/codegen-client/src/components/teams/TeamsPanel.tsx contains: GetAllTeams
+File C:/Users/adle/Development/codegen-example/codegen-client/src/components/tournaments/TournamentsPanel.tsx contains: GetAllTournaments
